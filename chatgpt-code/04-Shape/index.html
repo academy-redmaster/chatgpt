@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chart Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chart-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    canvas {
+      margin: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <canvas id="pieChart" width="400" height="400"></canvas>
+    <canvas id="barChart" width="400" height="400"></canvas>
+  </div>
+
+  <script>
+    // Data for the chart
+    const data = {
+      labels: [
+        'Technology',
+        'Financial Services',
+        'Healthcare',
+        'Education',
+        'Government/Public Sector',
+        'Telecommunications',
+        'Manufacturing',
+        'Retail',
+        'Media',
+        'Energy',
+        'Defense/Security',
+        'Other'
+      ],
+      datasets: [{
+        data: [17, 15, 9, 8, 6, 5, 4, 4, 3, 3, 3, 22],
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#8B008B',
+          '#008000',
+          '#FFA500',
+          '#00CED1',
+          '#FFD700',
+          '#000080',
+          '#FF4500',
+          '#808080',
+          '#C0C0C0'
+        ],
+        borderColor: '#fff',
+        borderWidth: 1
+      }]
+    };
+
+    // Create the pie chart
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: data,
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Pie Chart'
+        }
+      }
+    });
+
+    // Create the bar chart
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 20
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Bar Chart'
+          },
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

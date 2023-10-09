@@ -1,0 +1,22 @@
+D3.js
+chart.js
+google charts
+
+
+I want a website code to display a chart in two formats and format with the following data:
+Technology: 17%
+Financial Services: 15%
+Healthcare: 9%
+Education: 8%
+Government/Public Sector: 6%
+Telecommunications: 5%
+Manufacturing 4%
+Retail: 4%
+Media: 3%
+Energy: 3%
+Defense/Security: 3%
+Other: 22%
+
+
+===================
+good use the multi color for show better the candle

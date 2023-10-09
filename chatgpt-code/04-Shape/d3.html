@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D3.js Pie Chart Example</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <svg id="chart" width="400" height="400"></svg>
+
+  <script>
+    // Data for the chart
+    const data = [
+      { label: 'Technology', value: 17 },
+      { label: 'Financial Services', value: 15 },
+      { label: 'Healthcare', value: 9 },
+      { label: 'Education', value: 8 },
+      { label: 'Government/Public Sector', value: 6 },
+      { label: 'Telecommunications', value: 5 },
+      { label: 'Manufacturing', value: 4 },
+      { label: 'Retail', value: 4 },
+      { label: 'Media', value: 3 },
+      { label: 'Energy', value: 3 },
+      { label: 'Defense/Security', value: 3 },
+      { label: 'Other', value: 22 }
+    ];
+
+    // Calculate the total value
+    const totalValue = d3.sum(data, d => d.value);
+
+    // Create the pie layout
+    const pie = d3.pie()
+      .value(d => d.value);
+
+    // Set up the arc generator
+    const arc = d3.arc()
+      .innerRadius(0)
+      .outerRadius(150);
+
+    // Create the SVG container
+    const svg = d3.select('#chart');
+
+    // Add the pie slices
+    svg.selectAll('path')
+      .data(pie(data))
+      .join('path')
+      .attr('d', arc)
+      .attr('fill', (d, i) => d3.schemeCategory10[i]);
+
+    // Add the labels
+    svg.selectAll('text')
+      .data(pie(data))
+      .join('text')
+      .attr('transform', d => `translate(${arc.centroid(d)})`)
+      .attr('text-anchor', 'middle')
+      .text(d => `${d.data.label} (${((d.data.value / totalValue) * 100).toFixed(2)}%)`);
+  </script>
+</body>
+</html>

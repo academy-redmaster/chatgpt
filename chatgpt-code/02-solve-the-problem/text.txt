@@ -1,0 +1,3 @@
+The following code contains an error, fix it and explain it
+
+Try to improve the following code

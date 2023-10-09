@@ -1,0 +1,8 @@
+create the SVG code for Instagram Icon
+
+create the SVG code for sun and moon
+
+create the SVG code for The sun and the moon side by side with distance, the same size as the yellow sun with rays, and the moon with gray
+
+
+---> after result show in svg viewer
